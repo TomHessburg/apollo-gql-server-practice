@@ -1,0 +1,22 @@
+type User {
+  _id: ID!
+  name: String!
+  posts: [Post]
+}
+
+type Query {
+  findUsers: [User]
+}
+
+input NewUserInut {
+  name: String!
+}
+
+input UpdateUserInput {
+  name: String
+}
+
+type Mutation {
+  signup(input: NewUserInut!): User!
+  updateUser(id: String, input: UpdateUserInput!): User!
+}

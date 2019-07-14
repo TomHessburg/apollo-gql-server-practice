@@ -1,21 +1,32 @@
 const { ApolloServer, gql } = require("apollo-server");
 const mongoose = require("mongoose");
+const user = require("./types/user.resolvers");
+const User = require("./schema/userSchema");
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
+const typeDefs = `
+
+    type User {
+        _id: ID!
+        name: String!
+    }
+
+    type Query {
+        getUsers: [User]
+    }
 `;
 
 const resolvers = {
   Query: {
-    hello: () => "Hello, my friends"
+    getUsers: async () => await User.find({})
   }
 };
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context({ req }) {
+    return { user: null };
+  }
 });
 
 const connect = () => {
@@ -25,9 +36,8 @@ const connect = () => {
 };
 
 const port = process.env.PORT || 5000;
-
 connect()
-  .then(connection => {
+  .then(c => {
     server.listen(port).then(({ url }) => {
       console.log(`server ready at ${url}`);
     });
