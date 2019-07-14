@@ -1,0 +1,21 @@
+{
+  "name": "apollo-gql-server-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/TomHessburg/apollo-gql-server-practice.git",
+  "author": "Thomas Hessburg <44884308+TomHessburg@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon"
+  },
+  "dependencies": {
+    "apollo-server": "^2.6.9",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "mongoose": "^5.6.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
